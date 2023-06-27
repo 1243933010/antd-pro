@@ -58,7 +58,7 @@ export default [
   },
   {
     path: '/test',
-    name: '自定义测试',
+    name: 'customTesting',
     icon: 'crown',
     access: 'canTest',
     routes: [
@@ -68,7 +68,7 @@ export default [
       },
       {
         path: '/test/new-page',
-        name: '图表',
+        name: 'chart',
         component: './NewPage',
       },
     ],
