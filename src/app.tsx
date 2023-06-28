@@ -17,6 +17,7 @@ const loginPath = '/user/login';
  * @see  https://umijs.org/zh-CN/plugins/plugin-initial-state
  * */
 export async function getInitialState(): Promise<{
+  name:string,
   settings?: Partial<LayoutSettings>;
   currentUser?: API.CurrentUser;
   loading?: boolean;
@@ -27,8 +28,10 @@ export async function getInitialState(): Promise<{
       const msg = await queryCurrentUser({
         skipErrorHandler: true,
       });
+      console.log(msg.data)
       return msg.data;
     } catch (error) {
+      console.log('22')
       history.push(loginPath);
     }
     return undefined;
@@ -38,12 +41,14 @@ export async function getInitialState(): Promise<{
   if (location.pathname !== loginPath) {
     const currentUser = await fetchUserInfo();
     return {
+      name:'yue',
       fetchUserInfo,
       currentUser,
       settings: defaultSettings as Partial<LayoutSettings>,
     };
   }
   return {
+    name:'yue',
     fetchUserInfo,
     settings: defaultSettings as Partial<LayoutSettings>,
   };

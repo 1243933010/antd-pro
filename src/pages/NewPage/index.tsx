@@ -1,7 +1,14 @@
 import React from 'react';
 import { Line } from '@ant-design/charts';
+import {useModel} from 'umi'
+import { InputNumber } from 'antd';
+import styles from './index.less'
 
 const NewPage: React.FC = () => {
+    const {counter,setNumber} = useModel('inputNumber');
+    const {initialState} = useModel('@@initialState')
+    console.log(initialState)
+
   const data = [
     { year: '1991', value: 3 },
     { year: '1992', value: 4 },
@@ -23,6 +30,20 @@ const NewPage: React.FC = () => {
       shape: 'diamond',
     },
   };
-  return <Line {...config} />;
+
+ 
+
+  const onChange = (e:number|null )=>{
+    let num:number = e as number;
+    setNumber(num);
+  }
+
+  return (
+    <div>
+      <InputNumber min={1}   defaultValue={counter}   onChange={onChange} />
+      <div className={styles.globalText}>全局数据：{counter}</div>
+    <Line {...config} />;
+  </div>
+  )
 };
 export default NewPage;
