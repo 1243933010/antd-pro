@@ -4,8 +4,8 @@ import { join } from 'path';
 import defaultSettings from './defaultSettings';
 import proxy from './proxy';
 import routes from './routes';
-const { REACT_APP_ENV = 'dev' } = process.env;
-
+const {UMI_ENV, REACT_APP_ENV = 'dev' } = process.env;
+console.log(UMI_ENV,'--')
 export default defineConfig({
   /**
    * @name 开启 hash 模式
