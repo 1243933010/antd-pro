@@ -71,6 +71,11 @@ export default [
         name: 'chart',
         component: './NewPage',
       },
+      {
+        path: '/test/custom-table',
+        name: 'customTable',
+        component: './CustomTable',
+      },
     ],
   },
   {

@@ -1,6 +1,7 @@
 export default {
   'menu.link':'link',
   'menu.customTesting.chart':'图表',
+  'menu.customTesting.customTable':'自定义表格',
   'menu.customTesting':'自定义测试',
   'menu.welcome': '欢迎',
   'menu.more-blocks': '更多区块',
