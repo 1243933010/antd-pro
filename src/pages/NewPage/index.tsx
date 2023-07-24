@@ -8,7 +8,7 @@ import {getChart as getChartData} from '@/services/ant-design-pro/api'
 const getChart = async()=>{
   try {
     const data = await getChartData({});
-    if (data.status === 200) {
+    if (data.code === 0) {
       return data.data;
     }
   } catch (error) {

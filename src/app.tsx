@@ -31,7 +31,6 @@ export async function getInitialState(): Promise<{
       console.log(msg.data)
       return msg.data;
     } catch (error) {
-      console.log('22')
       history.push(loginPath);
     }
     return undefined;

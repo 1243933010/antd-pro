@@ -163,5 +163,6 @@ export default defineConfig({
     // react: 'React',
     // 'react-dom': 'ReactDOM',
     // "@ant-design/charts": "charts"
-  }
+  },
+  
 });
