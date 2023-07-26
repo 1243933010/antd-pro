@@ -95,3 +95,17 @@ export async function removeRule(options?: { [key: string]: any }) {
     ...(options || {}),
   });
 }
+
+/** 获取标签  /api/user/label */
+export async function userLabel() {
+  return request<Record<string, any>>('/api/user/label', {
+    method: 'GET'
+  });
+}
+
+/** 获取work标签   /api/work/label */
+export async function workLabel() {
+  return request<Record<string, any>>('/api/work/label', {
+    method: 'GET'
+  });
+}
