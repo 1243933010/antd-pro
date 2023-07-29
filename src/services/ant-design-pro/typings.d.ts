@@ -49,6 +49,8 @@ declare namespace API {
     updatedAt?: string;
     createdAt?: string;
     progress?: number;
+    message?:string
+    code?:number
   };
 
   type RuleList = {
@@ -57,6 +59,12 @@ declare namespace API {
     total?: number;
     success?: boolean;
   };
+
+  type ListResult = {
+    data:[];
+    code:number;
+    message?:string
+  }
 
   type FakeCaptcha = {
     code?: number;

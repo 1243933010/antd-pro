@@ -105,7 +105,37 @@ export async function userLabel() {
 
 /** 获取work标签   /api/work/label */
 export async function workLabel() {
-  return request<Record<string, any>>('/api/work/label', {
+  return request<Record<string, any>>('/api/work/tag', {
     method: 'GET'
+  });
+}
+
+
+/** 获取work标签   /api/work/label */
+export async function submitWork(options?: { [key: string]: any }) {
+  console.log(options)
+  return request<API.RuleListItem>('/api/work', {
+    method: 'POST',
+    data:options || {},
+  });
+}
+
+/** 获取work标签   /api/work/label */
+export async function getWork(
+  params: {
+    // query
+    /** 当前的页码 */
+    current?: number;
+    /** 页面的容量 */
+    pageSize?: number;
+  },
+  options?: { [key: string]: any },
+) {
+  return request<API.ListResult>('/api/work', {
+    method: 'GET',
+    params: {
+      ...params,
+    },
+    ...(options || {}),
   });
 }
