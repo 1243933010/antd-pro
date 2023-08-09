@@ -139,3 +139,13 @@ export async function getWork(
     ...(options || {}),
   });
 }
+
+/** 添加素材分类   /api/classification */
+export async function addClassification(
+  options?: { [key: string]: any },
+) {
+  return request<API.ListResult>('/api/classification', {
+    method: 'POST',
+    ...(options || {}),
+  });
+}

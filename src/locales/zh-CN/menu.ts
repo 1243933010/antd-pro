@@ -1,5 +1,6 @@
 export default {
   'menu.link':'link',
+  'menu.materialLibrary':'素材库',
   'menu.customTesting.chart':'图表',
   'menu.customTesting.customTable':'任务管理',
   'menu.customTesting':'自定义测试',

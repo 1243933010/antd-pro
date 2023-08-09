@@ -33,6 +33,12 @@ export default [
     component: './Welcome',
   },
   {
+    path:'materialLibrary',
+    name:'materialLibrary',
+    icon:'playSquareOutlined',
+    component: './materialLibrary',
+  },
+  {
     icon: 'smile',
     // path 支持为一个 url，必须要以 http 开头
     path: 'https://pro.ant.design/docs/getting-started-cn',
