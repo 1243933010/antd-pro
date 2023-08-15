@@ -131,7 +131,7 @@ export async function getWork(
   },
   options?: { [key: string]: any },
 ) {
-  return request<API.ListResult>('/api/work', {
+  return request('/api/work', {
     method: 'GET',
     params: {
       ...params,
@@ -147,5 +147,35 @@ export async function addClassification(
   return request<API.ListResult>('/api/classification', {
     method: 'POST',
     ...(options || {}),
+  });
+}
+
+/** work详情   /api/work */
+export async function workDetail(
+  id:number ,
+) {
+  return request<API.ListResult>(`/api/work/${id}`, {
+    method: 'GET',
+  });
+}
+
+
+/** work详情编辑   /api/work */
+export async function workDeit(
+  id:number ,
+  options?: { [key: string]: any },
+) {
+  return request<API.ListResult>(`/api/work/${id}`, {
+    method: 'PATCH',
+    data:options
+  });
+}
+
+/** work详情编辑   /api/work */
+export async function workDelete(
+  id:number 
+) {
+  return request<API.ListResult>(`/api/work/${id}`, {
+    method: 'DELETE'
   });
 }

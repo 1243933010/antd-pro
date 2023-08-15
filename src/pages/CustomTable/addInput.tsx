@@ -8,7 +8,8 @@ interface PropsType{
 
 export default React.forwardRef((props:PropsType,ref:any) => {
     React.useImperativeHandle(ref,()=>({
-        getInput,clearInputs
+        getInput,clearInputs,
+        getInputs
     }))
     const [inputs, setInputs] = useState([{ value:'' }]);
 
@@ -32,6 +33,9 @@ export default React.forwardRef((props:PropsType,ref:any) => {
     const getInput=()=>{
         return inputs
     }
+    const getInputs = (arr:{value:string}[])=>[
+        setInputs(arr)
+    ]
     return (
         <div ref={ref}>
              {<PlusCircleTwoTone onClick={handleAddInput} style={{fontSize: '25px'}}/>}

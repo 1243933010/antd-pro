@@ -19,14 +19,16 @@ export interface DialogForm {
 }
 
 export interface TableType {
-    id: number;
+    id?: number;
     endTime?: string;
     startTime?: string;
-    key: number;
-    tag?: string;
+    key?: number;
+    tag?: any;
     userId: number
     workList?: object[] | []
-    workType: number
+    workType: number,
+    time?:any
+    workTags?:ConvertTags[]
 }
 export interface TagType {
     workTag: {
@@ -38,7 +40,17 @@ export interface TagType {
 
 export interface SubmitType extends DialogForm {
     // time?:''
+    id?:number
     startTime?: string
     endTime?: string
+
+}
+
+export interface ConvertTags{
+    color?: string;
+    value?: string;
+    tag?: string;
+    children?:string
+    key?:string
 
 }
