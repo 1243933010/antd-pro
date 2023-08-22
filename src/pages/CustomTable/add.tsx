@@ -66,6 +66,7 @@ export default React.forwardRef((props: PropsType, ref: any) => {
     const getFormData = ()=>{
          let {id,userId,...obj} = detail;
          let data = {id,userId,...formRef.current?.getFieldsValue()}
+         
          data.workList = addInputRef.current?.getInput();
          return data;
         
@@ -88,6 +89,7 @@ export default React.forwardRef((props: PropsType, ref: any) => {
             obj.tag.push(objs)
 
         })
+        console.log(obj,'=========')
         formRef.current?.setFieldsValue({ ...obj })
         setDetail(obj)
         addInputRef.current?.getInputs(obj.workList)

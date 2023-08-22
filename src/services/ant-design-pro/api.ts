@@ -32,17 +32,7 @@ export async function login(body: API.LoginParams, options?: { [key: string]: an
   });
 }
 
-/** 登录接口 POST /api/login/account */
-export async function getChart(body: API.LoginParams, options?: { [key: string]: any }) {
-  return request('/api/user/chart', {
-    method: 'GET',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    data: body,
-    ...(options || {}),
-  });
-}
+
 
 /** 此处后端没有提供注释 GET /api/notices */
 export async function getNotices(options?: { [key: string]: any }) {
@@ -177,5 +167,60 @@ export async function workDelete(
 ) {
   return request<API.ListResult>(`/api/work/${id}`, {
     method: 'DELETE'
+  });
+}
+
+/** wechart类型列表   /api/echart/type */
+export async function echartType(
+  type:number|undefined
+) {
+  return request<any>(`/api/echart/type/${type}`, {
+    method: 'GET'
+  });
+}
+
+
+/** echart数据提交   /api/echart */
+export async function echartAdd(
+  options?: { [key: string]: any }, 
+) {
+  return request<any>(`/api/echart`, {
+    method: 'POST',
+    data:options
+  });
+}
+
+
+
+/** echart数据列表   /api/echart */
+export async function echartList(
+  options?: { [key: string]: any }, 
+) {
+  return request<any>(`/api/echart`, {
+    method: 'GET',
+    params:options
+  });
+}
+
+
+
+/** 删除echart数据   /api/echart */
+export async function echartDelete(
+  id:number|undefined
+) {
+  return request<any>(`/api/echart/${id}`, {
+    method: 'DELETE',
+  });
+}
+
+
+/** 修改echart数据   /api/echart */
+export async function echartEdit(
+  id:number,
+  options: { [key: string]: any }, 
+) {
+  return request<any>(`/api/echart/${id}`, {
+    method: 'PATCH',
+    data:options
   });
 }

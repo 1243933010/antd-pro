@@ -10,10 +10,11 @@ import { TablePaginationConfig } from 'antd/lib/table/interface';
 import { DataType, DialogForm, TableType, TagType, SubmitType } from './interface'
 import dayjs from 'dayjs';
 const { RangePicker } = DatePicker;
-
+// import {useModel} from 'umi'
 
 
 export default () => {
+    // const {counter,setNumber} = useModel('inputNumber');
     const columns: ColumnsType<DataType> = [
         {
             title: '时间', dataIndex: '', key: 'time', render: (text) => {
@@ -193,7 +194,7 @@ export default () => {
                         mode="multiple"
                         style={{ width: 200 }}
                         optionLabelProp="tag" // 指定显示标签的字段名为 'tag'
-                        placeholder="Select a severity level"
+                        placeholder="选择tag"
                         labelInValue={true}
                     >
                         {labelOptionList.map(item => (
