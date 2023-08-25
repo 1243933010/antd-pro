@@ -5,7 +5,7 @@ import type { FormInstance } from 'antd/es/form';
 import { TablePaginationConfig } from 'antd/lib/table/interface';
 import { DataType } from '../CustomTable/interface';
 import AddForm from './addForm'
-
+import { imgClassificationList,imgClassificationAdd } from '@/services/ant-design-pro/api';
 
 const MaterialLibrary: React.FC = () => {
     const formRef = React.useRef<FormInstance>(null);
@@ -13,13 +13,36 @@ const MaterialLibrary: React.FC = () => {
     const [materialLibrary, setMaterialLibrary] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [dialogType, setDialogType] = useState('classification');
+    const [option,setOption] = useState([]);
     const [data, setData] = useState([])
     const onFinish = (values:FormInstance) => {
        console.log(values)
     };
     
-    useEffect(() => { }, [])
+    useEffect(() => {
+        getLabel();
+     }, [])
     const handleOk = async () => {
+        let data = childRef.current?.callbackData();
+        console.log(data);
+        let result;
+        if(dialogType==='classification'){
+            if(!data.materialLibrary){
+                message.error({content:'不能为空'})
+                return
+            }
+            result = await imgClassificationAdd(data);
+        }else{
+
+        }
+        console.log(result);
+        if(result.code===0){
+            message.success({content:result.message})
+            setIsModalOpen(false);
+            getLabel();
+            return
+        }
+        message.error({content:result.message})
         
     }
     const openDialog=(type:string)=>{
@@ -29,9 +52,14 @@ const MaterialLibrary: React.FC = () => {
     const getData = async (data?: object) => {   //获取table数据
        
     }
-    const listenClassification = ()=>{
-        
+    const getLabel = async()=>{
+        let data = await imgClassificationList();
+        console.log(data);
+        if(data.code ===0){
+            setOption(data.data);
+        }
     }
+   
     return (
         <div>
             <Form
@@ -45,7 +73,7 @@ const MaterialLibrary: React.FC = () => {
                 <Form.Item name="materialLibrary" label="素材分类" >
                     <Select
                         style={{ width: 180 }}
-                        options={[{ value: '1', label: '周任务' }, { value: '2', label: '月任务' }]}
+                        options={option}
                         onChange={(e) => setMaterialLibrary(e)}
                         allowClear
                         placeholder='选择分类'
@@ -64,7 +92,7 @@ const MaterialLibrary: React.FC = () => {
             <div></div>
             <Pagination defaultCurrent={6} total={500} />
             <Modal title={dialogType == 'classification' ? '添加分类' : "上传素材"} open={isModalOpen} onOk={handleOk} onCancel={() => setIsModalOpen(false)}>
-                <AddForm ref={childRef} listenClassification={listenClassification} materialLibrary={dialogType} />
+                <AddForm option={option} ref={childRef}  materialLibrary={dialogType} />
             </Modal>
             </div>
     )

@@ -1,4 +1,5 @@
 export interface  propsData{
     materialLibrary:string
-    listenClassification:Function
+    option:{}[]
+    // listenClassification:Function
 }

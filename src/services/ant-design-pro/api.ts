@@ -224,3 +224,23 @@ export async function echartEdit(
     data:options
   });
 }
+
+
+/** 素材图片类型列表   /api/classificationList */
+export async function imgClassificationList(
+) {
+  return request<any>(`/api/materiallibrary/label`, {
+    method: 'GET',
+  });
+}
+
+/** 添加图片类型  /api/classificationList */
+export async function imgClassificationAdd(
+  options: { [key: string]: any }, 
+  ) {
+    return request<any>(`/api/materiallibrary/label`, {
+      method: 'POST',
+      data:options
+    });
+  }
+  

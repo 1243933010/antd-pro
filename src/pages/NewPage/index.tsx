@@ -152,6 +152,11 @@ const NewPage: React.FC = () => {
     <div>
       {/* <InputNumber min={1}   defaultValue={counter}   onChange={onChange} />
       <div className={styles.globalText}>全局数据：{counter}</div> */}
+      {/* <div className={styles.px}>px尺寸</div>
+      <div className={styles.rem}>rem尺寸</div>
+      <div className={styles.vw}>vw尺寸</div> */}
+
+
       <Select
         style={{ width: 180 }}
         options={[{ value: 1, label: '私服人数变化' }, { value: 2, label: 'gs人数变化' }, { value: 3, label: '体重变化' }]}
