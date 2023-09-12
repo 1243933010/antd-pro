@@ -82,6 +82,11 @@ export default [
         name: 'customTable',
         component: './CustomTable',
       },
+      {
+        path: '/test/custom-order',
+        name: 'customsOrder',
+        component: './CustomsOrder',
+      },
     ],
   },
   {

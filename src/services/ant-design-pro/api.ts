@@ -244,3 +244,60 @@ export async function imgClassificationAdd(
     });
   }
   
+
+  /** 上传图片  /api/upload */
+export async function fileUpload(
+  options: { [key: string]: any }, 
+  ) {
+    return request<any>(`/api/upload`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+      data:options
+    });
+  }
+  
+  
+  /** 上传图片绑定类型  /api/materiallibrary */
+export async function addImg(
+  options: { [key: string]: any }, 
+  ) {
+    return request<any>(`/api/materiallibrary`, {
+      method: 'POST',
+      data:options
+    });
+  }
+  
+    /** 获取图片列表  /api/materiallibrary */
+export async function getImg(
+  options: { [key: string]: any }, 
+  ) {
+    return request<any>(`/api/materiallibrary`, {
+      method: 'get',
+      params:options
+    });
+  }
+  
+
+      /** 删除图片  /api/materiallibrary */
+export async function delImg(
+  options: { [key: string]: any }, 
+  ) {
+    return request<any>(`/api/materiallibrary/${options.id}`, {
+      method: 'delete'
+    });
+  }
+  
+
+  
+      /** 删除图片  /api/materiallibrary */
+export async function updateXlsx(
+  options: { [key: string]: any }, 
+  ) {
+    return request<any>(`/api/updateXlsx`, {
+      method: 'post',
+      data:options
+    });
+  }
+  

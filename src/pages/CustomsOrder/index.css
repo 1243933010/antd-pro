@@ -1,0 +1,8 @@
+.flex {
+  display: flex;
+  justify-content: space-around;
+  align-self: flex-start;
+}
+.flex .textArea {
+  width: 800px;
+}

@@ -1,4 +1,5 @@
 export default {
+  'menu.customTesting.customsOrder':'海关订单',
   'menu.link':'link',
   'menu.materialLibrary':'素材库',
   'menu.customTesting.chart':'图表',

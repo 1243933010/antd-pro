@@ -72,7 +72,12 @@ export const errorConfig: RequestConfig = {
       } else if (error.response) {
         // Axios 的错误
         // 请求成功发出且服务器也响应了状态码，但状态代码超出了 2xx 的范围
-        message.error(`Response status:${error.response.status}`);
+       
+        let message1 = JSON.parse(error?.request?.response)
+        console.log(message1.message,'---')
+        message.error(message1.message||`Response status:${error.response.status}`);
+
+        // message.error(`Response status:${error.response.status}`);
       } else if (error.request) {
         // 请求已经成功发起，但没有收到响应
         // \`error.request\` 在浏览器中是 XMLHttpRequest 的实例，
@@ -92,7 +97,9 @@ export const errorConfig: RequestConfig = {
       // const url = config?.url?.concat('?token = 123');
       const url = config?.url?.concat('');
       const token = localStorage.getItem('token')
+      // console.log(config,'====')
       config.headers={ "authorization": `Bearer ${token||''}` }
+      // , 'Content-Type': 'multipart/form-data'
       return { ...config, url };
     },
   ],
