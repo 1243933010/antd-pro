@@ -1,4 +1,5 @@
 export default {
+  'menu.userPage':'用户列表',
   'menu.customTesting.customsOrder':'海关订单',
   'menu.link':'link',
   'menu.materialLibrary':'素材库',

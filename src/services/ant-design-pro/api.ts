@@ -12,6 +12,43 @@ export async function currentUser(options?: { [key: string]: any }) {
   });
 }
 
+
+
+
+/** 获取用户列表 GET /api/user */
+export async function getUserList( params: {
+  // query
+  /** 当前的页码 */
+  current?: number;
+  /** 页面的容量 */
+  pageSize?: number;
+},
+options?: { [key: string]: any },) {
+  return request<API.UserList>('/api/user', {
+    method: 'GET',
+    params: {
+      ...params,
+    },
+    ...(options || {}),
+  });
+}
+/** 创建用户 POST /api/user */
+export async function createUser(options: { [key: string]: any }) {
+  console.log(options,'--')
+  return request<API.UserInfo>('/api/user', {
+    method: 'POST',
+    data:options
+  });
+}
+
+/** 更新用户信息 POST /api/updateUser */
+export async function updateUser(options: { [key: string]: any }) {
+  return request<API.UserItem>('/api/user', {
+    method: 'PUT',
+    data:options
+  });
+}
+
 /** 退出登录接口 POST /api/login/outLogin */
 export async function outLogin(options?: { [key: string]: any }) {
   return request<Record<string, any>>('/api/login/outLogin', {
@@ -301,3 +338,5 @@ export async function updateXlsx(
     });
   }
   
+
+ 

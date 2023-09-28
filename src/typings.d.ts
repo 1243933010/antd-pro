@@ -16,7 +16,10 @@ declare module '@antv/data-set';
 declare module 'mockjs';
 declare module 'react-fittext';
 declare module 'bizcharts-plugin-slider';
+// declare module '@umijs/max'
 
 declare const REACT_APP_ENV: 'test' | 'dev' | 'pre' | false;
 
 declare const UPLOAD_IMG_URL:string;
+declare const IMG_URL:string;
+

@@ -22,6 +22,7 @@ export default [
         path: '/user/login',
         component: './User/Login',
       },
+     
 
     ],
   },
@@ -49,7 +50,7 @@ export default [
     path: '/admin',
     name: 'admin',
     icon: 'crown',
-    access: 'canAdmin',
+    access: 'canTest',
     routes: [
       {
         path: '/admin',
@@ -63,10 +64,27 @@ export default [
     ],
   },
   {
+    path: '/admin1',
+    name: 'admin',
+    icon: 'crown',
+    access: 'canAdmin',
+    routes: [
+      {
+        path: '/admin1',
+        redirect: '/admin/sub-page',
+      },
+      {
+        path: '/admin1/sub-page',
+        name: 'sub-page',
+        component: './Admin',
+      },
+    ],
+  },
+  {
     path: '/test',
     name: 'customTesting',
     icon: 'crown',
-    access: 'canTest',
+    access: 'canAdmin',
     routes: [
       {
         path: '/test',
@@ -94,6 +112,12 @@ export default [
     icon: 'table',
     path: '/list',
     component: './TableList',
+  },
+  {
+    name: 'userPage',
+    access: 'canAdmin',
+    path: '/userPage',
+    component: './User/Index',
   },
   {
     path: '/',

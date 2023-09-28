@@ -45,8 +45,8 @@ export default {
   'pages.searchTable.ruleName': '规则名称为必填项',
   'pages.searchTable.titleCallNo': '服务调用次数',
   'pages.searchTable.titleStatus': '状态',
-  'pages.searchTable.nameStatus.default': '关闭',
-  'pages.searchTable.nameStatus.running': '运行中',
+  'pages.searchTable.nameStatus.default': '注销',
+  'pages.searchTable.nameStatus.running': '正常',
   'pages.searchTable.nameStatus.online': '已上线',
   'pages.searchTable.nameStatus.abnormal': '异常',
   'pages.searchTable.titleUpdatedAt': '上次调度时间',
@@ -62,4 +62,11 @@ export default {
   'pages.searchTable.tenThousand': '万',
   'pages.searchTable.batchDeletion': '批量删除',
   'pages.searchTable.batchApproval': '批量审批',
+  'pages.searchTable.updateForm.ruleName.name':'名称',
+  'pages.searchTable.email':'邮箱',
+  'pages.searchTable.userId':'用户id',
+  'pages.searchTable.isShow':'状态',
+  'pages.searchTable.avatar':'头像',
+  'pages.searchTable.edit':'编辑',
+  'pages.searchTable.createForm.addUser':'新增用户'
 };

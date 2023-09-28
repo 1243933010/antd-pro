@@ -32,8 +32,11 @@ const MaterialLibrary: React.FC = () => {
     };
     
     useEffect(() => {
+        console.log(process)
         getLabel();
         getData();
+
+       
      }, [])
     const handleOk = async () => {
         let data = childRef.current?.callbackData();
@@ -145,7 +148,7 @@ const MaterialLibrary: React.FC = () => {
                 {
                     data.length>0&&data.map((val:{url:string},index)=>(
                             <div className='img-size' key={index}>
-                                <img onMouseEnter={()=>{setMouseIndex(index)}} src={val.url}/>
+                                <img onMouseEnter={()=>{setMouseIndex(index)}} src={IMG_URL+val.url}/>
                                 {mouseIndex==index&&<div onClick={()=>setDeleteModalOpen(true)} className='popup'><DeleteTwoTone style={{fontSize:'30px'}} /></div>}
                             </div>
                     ))

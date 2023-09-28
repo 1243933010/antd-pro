@@ -108,4 +108,29 @@ declare namespace API {
     description?: string;
     type?: NoticeIconItemType;
   };
+
+  type UserItem = {
+    id?:number;
+    email:string;
+    name:string;
+    access:string;
+    avatar?:string;
+    password:string;
+    isShow?:number;
+    title?:string
+  }
+  type UserList = {
+    data?: UserItem[];
+    /** 列表的内容总数 */
+    total?: number;
+    code?:number;
+    message?: string;
+  }
+  type UserInfo = {
+    data?: UserItem;
+    /** 列表的内容总数 */
+    total?: number;
+    code?:number;
+    message?: string;
+  }
 }
