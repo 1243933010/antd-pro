@@ -92,7 +92,6 @@ const [initialValues,setInitialValues] = useState<FormValueType>({
         onFinish={async (value:FormValueType) => {
         console.log({...value,avatar,id:props.values.id},'---1')
         props.onSubmit({...value,avatar,id:props.values.id});
-         
         }}
         initialValues={initialValues}
       >

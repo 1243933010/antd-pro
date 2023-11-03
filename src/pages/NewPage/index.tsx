@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Line } from '@ant-design/charts';
-import { useModel } from '@/.umi/plugin-model';
-// import { useModel } from 'umi'
+// import { useModel } from '@/.umi/plugin-model';
+import { useModel } from 'umi'
 import { InputNumber, Select, Button, Modal, message, Divider, Table, Popconfirm } from 'antd';
 import styles from './index.less'
 import { echartList, echartType, echartDelete } from '@/services/ant-design-pro/api'

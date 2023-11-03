@@ -12,7 +12,9 @@ declare module '*.bmp';
 declare module '*.tiff';
 declare module 'omit.js';
 declare module 'numeral';
+// declare module '@umijs/max';  //版本ts提示不兼容，临时忽略掉
 declare module '@antv/data-set';
+
 declare module 'mockjs';
 declare module 'react-fittext';
 declare module 'bizcharts-plugin-slider';
@@ -23,3 +25,4 @@ declare const REACT_APP_ENV: 'test' | 'dev' | 'pre' | false;
 declare const UPLOAD_IMG_URL:string;
 declare const IMG_URL:string;
 
+declare const REQUEST_URL:string;

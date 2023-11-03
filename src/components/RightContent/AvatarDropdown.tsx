@@ -24,6 +24,7 @@ export const AvatarDropdown: React.FC<GlobalHeaderRightProps> = ({ menu, childre
   /**
    * 退出登录，并且将当前的 url 保存
    */
+ 
   const loginOut = async () => {
     await outLogin();
     const { search, pathname } = window.location;

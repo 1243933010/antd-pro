@@ -125,6 +125,7 @@ export default {
         status: 'ok',
         type,
         currentAuthority: 'admin',
+        code:0
       });
       access = 'admin';
       return;

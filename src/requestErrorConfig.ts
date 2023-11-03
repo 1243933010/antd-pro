@@ -95,9 +95,9 @@ export const errorConfig: RequestConfig = {
     (config: RequestOptions) => {
       // 拦截请求配置，进行个性化处理。
       // const url = config?.url?.concat('?token = 123');
-      const url = config?.url?.concat('');
+      const url =REQUEST_URL+config?.url?.concat('');
       const token = localStorage.getItem('token')
-      // console.log(config,'====')
+      console.log(config,'====',REQUEST_URL,process.env.NODE_ENV )
       config.headers={ "authorization": `Bearer ${token||''}` }
       // , 'Content-Type': 'multipart/form-data'
       return { ...config, url };

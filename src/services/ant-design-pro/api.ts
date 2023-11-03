@@ -12,7 +12,30 @@ export async function currentUser(options?: { [key: string]: any }) {
   });
 }
 
+export async function packageJson(params:{token:string}) {
+  return request<{
+    data: API.ListResult;
+  }>('/api/common/packageJson', {
+    method: 'POST',
+    data:params
+  });
+}
+export async function getPackageJson() {
+  return request<{
+    data: API.ListResult;
+  }>('/api/common/packageJson', {
+    method: 'GET',
+  });
+}
 
+export async function getNotice(params:{token:string}) {
+  return request<{
+    data: API.ListResult;
+  }>('/api/common/notice', {
+    method: 'POST',
+    data:params
+  });
+}
 
 
 /** 获取用户列表 GET /api/user */
