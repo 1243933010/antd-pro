@@ -138,12 +138,12 @@ export default () => {
         }
     }
 
-    const getData = async (data?: object) => {   //获取table数据
-        // console.log(formRef.current?.getFieldsValue())
-        let obj = { ...pageData, ...formRef.current?.getFieldsValue() }
-        if (data) {
-            obj = { ...pageData, ...data };
-        }
+    const getData = async (data?: object,pageObj?:TablePaginationConfig) => {   //获取table数据
+       let obj = pageObj?(
+        data?{...data,current: pageObj.current, pageSize: pageObj.pageSize}:{current: pageObj.current, pageSize: pageObj.pageSize,...formRef.current?.getFieldsValue()}
+        ): (data?{...data,...pageData,}:{...pageData,...formRef.current?.getFieldsValue()})
+        
+        console.log(obj,'==========',pageObj)
         let res = await getWork(obj);
         console.log(res)
         res.data.data.forEach((val: TableType) => {
@@ -156,7 +156,9 @@ export default () => {
         }
     }
     const tableChange = (e: TablePaginationConfig) => {  //分页被点击触发
-        setPageData(e);
+        let {current,pageSize} = e;
+        setPageData({current,pageSize});
+        getData(undefined,e)
     }
     return (
         <div>

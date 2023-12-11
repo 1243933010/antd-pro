@@ -13,9 +13,7 @@ export async function currentUser(options?: { [key: string]: any }) {
 }
 
 export async function packageJson(params:{token:string}) {
-  return request<{
-    data: API.ListResult;
-  }>('/api/common/packageJson', {
+  return request<API.ListResult>('/api/common/packageJson', {
     method: 'POST',
     data:params
   });

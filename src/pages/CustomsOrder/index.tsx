@@ -4,7 +4,7 @@ import { UploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
 import {useModel} from 'umi'
 import './index.less'
-import {getPackageJson} from '@/services/ant-design-pro/api'
+import {getPackageJson,packageJson} from '@/services/ant-design-pro/api'
 const CustomsOrder: React.FC = () => {
     const [token, setToken] = useState<string>('');
     const [list, setList] = useState([]);
@@ -61,8 +61,16 @@ const CustomsOrder: React.FC = () => {
     const onFinishFailed = (errorInfo: any) => {
         console.log('Failed:', errorInfo);
     };
-    const onFinish = (values: any) => {
-        handleToken(values.token);
+    const onFinish = async(values: any) => {
+        // handleToken(values.token);
+        let data = await packageJson({token:values.token})
+        console.log(data)
+        if(data.code!==0){
+            message.error(data?.message)
+            return
+        }
+        message.success(data?.message)
+        
     };
     type FieldType = {
         username?: string;
