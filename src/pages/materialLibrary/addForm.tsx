@@ -20,7 +20,7 @@ const getBase64 = (file: RcFile): Promise<string> =>
 
 export default React.forwardRef((props: propsData, ref: any) => {
     React.useImperativeHandle(ref, () => ({
-        callbackData,resrtData
+        callbackData, resrtData
     }))
     const [previewOpen, setPreviewOpen] = useState(false);
     const [previewImage, setPreviewImage] = useState('');
@@ -28,14 +28,18 @@ export default React.forwardRef((props: propsData, ref: any) => {
     const [fileList, setFileList] = useState<UploadFile[]>([
 
     ])
-    const [token,setToken] = useState<string>('');
+    const [token, setToken] = useState<string>('');
     const handleCancel = () => setPreviewOpen(false);
     const formRef = React.useRef<FormInstance>(null);
 
     const callbackData = () => {
         let formData = formRef.current?.getFieldsValue();
-        console.log(fileList,'---')
-        return { ...formData,fileList};
+        
+        let arr =  fileList.map((val:any)=>{
+            return {...val,url:val.url.split(UPLOAD_IMG_URL).join("")}
+        })
+        // console.log(arr, '---',formData)
+        return { ...formData, fileList:arr };
     }
     const handlePreview = async (file: UploadFile) => {
         if (!file.url && !file.preview) {
@@ -47,10 +51,10 @@ export default React.forwardRef((props: propsData, ref: any) => {
         setPreviewTitle(file.name || file.url!.substring(file.url!.lastIndexOf('/') + 1));
     };
 
-    useEffect(()=>{
-        let token:string = localStorage.getItem('token')||'';
+    useEffect(() => {
+        let token: string = localStorage.getItem('token') || '';
         setToken(token);
-    },[])
+    }, [])
 
     const uploadButton = (
         <div>
@@ -58,38 +62,38 @@ export default React.forwardRef((props: propsData, ref: any) => {
             <div style={{ marginTop: 8 }}>Upload</div>
         </div>
     );
-    const customRequest = async(e:any)=>{
-       console.log(e);
+    const customRequest = async (e: any) => {
+        console.log(e);
         // let formData = new FormData()
         // formData.append('file',e.file);
         // let data = await fileUpload(formData)
         // if(data.code===0){
-            // console.log(data,'(((111')
-            // const updatedFile = { ...e.file, status: 'done', url: data.data.url };
-            // const updatedList = [...fileList, updatedFile];
-            // e.file.status = 'done'
-            // e.file.url = data.data.url;
-            // setFileList(updatedList);
+        // console.log(data,'(((111')
+        // const updatedFile = { ...e.file, status: 'done', url: data.data.url };
+        // const updatedList = [...fileList, updatedFile];
+        // e.file.status = 'done'
+        // e.file.url = data.data.url;
+        // setFileList(updatedList);
         // }
     }
-    const onRemove = (file:any)=>{
+    const onRemove = (file: any) => {
         setFileList(fileList => fileList.filter(item => item.uid !== file.uid));
     }
-    const resrtData = ()=>{
+    const resrtData = () => {
         formRef.current?.resetFields();
         setFileList([]);
     }
-    const handleChange: UploadProps['onChange'] = async({ file,fileList: newFileList }) =>{
-        console.log(file,newFileList)
-    newFileList = newFileList.map(file => {
-      if (file.response) {
-        file.url = file.response.data.url;
-      }
-      return file;
-    });
-    setFileList(newFileList)
+    const handleChange: UploadProps['onChange'] = async ({ file, fileList: newFileList }) => {
+        console.log(file, newFileList)
+        newFileList = newFileList.map(file => {
+            if (file.response) {
+                file.url = UPLOAD_IMG_URL + file.response.data.url;
+            }
+            return file;
+        });
+        setFileList(newFileList)
     }
-   
+
     return (
         <div>
 
@@ -108,15 +112,15 @@ export default React.forwardRef((props: propsData, ref: any) => {
                     </Form.Item>
                     {/* action="http://192.168.0.121:8000/api/upload" headers={{'authorization':`Bearer ${token}`}}   onChange={handleChange} customRequest={customRequest}*/}
                     <Upload
-                       action={`${UPLOAD_IMG_URL}/api/upload`}
+                        action={`${UPLOAD_IMG_URL}/api/upload`}
                         listType="picture-card"
                         fileList={fileList}
                         onPreview={handlePreview}
-                        onRemove ={onRemove}
-                        onChange={handleChange} 
-                        multiple 
-                        headers={{'authorization':`Bearer ${token}`}}
-                        
+                        onRemove={onRemove}
+                        onChange={handleChange}
+                        multiple
+                        headers={{ 'authorization': `Bearer ${token}` }}
+
                     >
                         {fileList.length >= 8 ? null : uploadButton}
                     </Upload>
