@@ -130,6 +130,7 @@ const NewPage: React.FC = () => {
     if (result.code === 0) {
       message.success({ content: result.message })
       setIsModalOpen(false);
+      getEchartList(undefined)
       return
     }
     message.error({ content: result.message })

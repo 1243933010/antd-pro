@@ -63,6 +63,7 @@ const MaterialLibrary: React.FC = () => {
             childRef.current.resrtData();
             setIsModalOpen(false);
             getLabel();
+            getData();
             return
         }
         
@@ -149,8 +150,8 @@ const MaterialLibrary: React.FC = () => {
                 {
                     data.length>0&&data.map((val:{url:string},index)=>(
                             <div className='img-size' key={index}>
-                                <img onMouseLeave={()=>{console.log('111');setMouseIndex(null)}} onMouseEnter={()=>{setMouseIndex(index)}} src={UPLOAD_IMG_URL+val.url}/>
-                                {mouseIndex==index&&<div onClick={()=>setDeleteModalOpen(true)} className='popup'><DeleteTwoTone style={{fontSize:'30px'}} /></div>}
+                                <img  onMouseOver={()=>{setMouseIndex(index)}} src={UPLOAD_IMG_URL+val.url}/>
+                                {mouseIndex==index&&<div onMouseOut={()=>{setMouseIndex(null)}} onClick={()=>setDeleteModalOpen(true)} className='popup'><DeleteTwoTone style={{fontSize:'30px'}} /></div>}
                             </div>
                     ))
                 }

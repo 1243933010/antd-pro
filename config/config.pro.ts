@@ -1,7 +1,7 @@
 export default {
     define:{
-        UPLOAD_IMG_URL:'http://127.0.0.1:3006',
-        IMG_URL:'',
+        UPLOAD_IMG_URL:'http://43.139.248.50:3005',
+        IMG_URL:'http://43.139.248.50:3005',
         REQUEST_URL:'',
         REQUEST_URL1:'http://localhost:3006/'
     }

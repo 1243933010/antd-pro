@@ -112,7 +112,7 @@ export default React.forwardRef((props: propsData, ref: any) => {
                     </Form.Item>
                     {/* action="http://192.168.0.121:8000/api/upload" headers={{'authorization':`Bearer ${token}`}}   onChange={handleChange} customRequest={customRequest}*/}
                     <Upload
-                        action={`${UPLOAD_IMG_URL}/api/upload`}
+                        action={`/api/upload`}
                         listType="picture-card"
                         fileList={fileList}
                         onPreview={handlePreview}
