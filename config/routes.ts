@@ -34,6 +34,12 @@ export default [
     component: './Welcome',
   },
   {
+    path: '/project',
+    icon: 'crown',
+    name: 'admin.sub-page',
+    component: './Admin',
+  },
+  {
     path:'materialLibrary',
     name:'materialLibrary',
     icon:'playSquareOutlined',
@@ -75,7 +81,7 @@ export default [
       },
       {
         path: '/admin1/sub-page',
-        name: 'sub-page',
+        name: '二级权限页面',
         component: './Admin',
       },
     ],
