@@ -360,4 +360,13 @@ export async function updateXlsx(
   }
   
 
- 
+     /** 获取项目列表  /api/project */
+export async function getProject(
+  options: { [key: string]: any }, 
+  ) {
+    return request<any>(`/api/project`, {
+      method: 'get',
+      params:options
+    });
+  }
+  

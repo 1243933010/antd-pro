@@ -1,9 +1,9 @@
 import { HeartTwoTone, SmileTwoTone } from '@ant-design/icons';
 import { PageContainer } from '@ant-design/pro-components';
-import { useIntl,useRequest } from '@umijs/max';
-import { Alert, Card, Typography,List } from 'antd';
+import { useIntl, useRequest } from '@umijs/max';
+import { Alert, Card, Typography, List } from 'antd';
 import React from 'react';
-import { imgClassificationList,getProject} from '@/services/ant-design-pro/api';
+import { imgClassificationList, getProject } from '@/services/ant-design-pro/api';
 import AvatarList from '@/components/AvatarList';
 
 export type Member = {
@@ -15,17 +15,17 @@ export type Member = {
 interface ListItemDataType {
   id: string;
   owner: string;
-  title: string;
+  projectName: string;
   avatar: string;
-  cover: string;
+  projectImg: string;
   status: 'normal' | 'exception' | 'active' | 'success';
-  percent: number;
+  label: string;
   logo: string;
   href: string;
   body?: any;
   updatedAt: number;
   createdAt: number;
-  subDescription: string;
+  richText: string;
   description: string;
   activeUser: number;
   newUser: number;
@@ -43,7 +43,7 @@ const Admin: React.FC = () => {
   const intl = useIntl();
   const { data, loading, run } = useRequest((values: any) => {
     console.log('form data', values);
-    return imgClassificationList();
+    return getProject({});
   });
   const list = data?.list || [];
   const cardList = list && (
@@ -62,31 +62,37 @@ const Admin: React.FC = () => {
       dataSource={list}
       renderItem={(item) => (
         <List.Item>
-          <Card  hoverable cover={<img alt={item.title} src={item.cover} />}>
+          <Card hoverable cover={ 
+            // style={{width:'200px',height:'200px'}}
+            <img style={{height:'250px'}}  alt={item.projectName} src={UPLOAD_IMG_URL+item.projectImg}  />
+            }>
             <Card.Meta
-              title={<a>{item.title}</a>}
+              title={<a>{item.projectName}</a>}
               description={
+                // <div>{item.label}</div>
                 <Paragraph
                   ellipsis={{
-                    rows: 2,
+                    rows: 5,
                   }}
                 >
-                  {item.subDescription}
+                  {item.label}
                 </Paragraph>
               }
             />
             <div >
               <span>{item.updatedAt}</span>
               <div >
-                <AvatarList size="small">
-                  {item.members.map((member, i) => (
-                    <AvatarList.Item
-                      key={getKey(item.id, i)}
-                      src={member.avatar}
-                      tips={member.name}
-                    />
-                  ))}
-                </AvatarList>
+                {
+                  item.members && <AvatarList size="small">
+                    {item.members.map((member, i) => (
+                      <AvatarList.Item
+                        key={getKey(item.id, i)}
+                        src={member.avatar}
+                        tips={member.name}
+                      />
+                    ))}
+                  </AvatarList>
+                }
               </div>
             </div>
           </Card>
@@ -95,12 +101,7 @@ const Admin: React.FC = () => {
     />
   );
   return (
-    <PageContainer
-      content={intl.formatMessage({
-        id: 'pages.admin.subPage.title',
-        defaultMessage: 'This page can only be viewed by admin',
-      })}
-    >
+    <PageContainer>
       <div >{cardList}</div>
     </PageContainer>
   );
