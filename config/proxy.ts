@@ -16,10 +16,10 @@ export default {
     '/api/': {
       // 要代理的地址
       // target: 'http://43.139.248.50:3005/',
-      target: 'http://192.168.0.83:3006/',
+      target: 'http://100.117.100.7:3006/',
 
       // target:'http://r53kdd.natappfree.cc/',
-      
+
       // 配置了这个可以从 http 代理到 https
       // 依赖 origin 的功能可能需要这个，比如 cookie
       // changeOrigin: true,
